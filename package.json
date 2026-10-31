@@ -1,0 +1,35 @@
+{
+  "name": "codex-sweatshop",
+  "version": "0.6.11",
+  "private": true,
+  "license": "MIT",
+  "repository": {"type":"git","url":"git+https://github.com/Roger96485/Codex-Sweatshop.git"},
+  "homepage": "https://github.com/Roger96485/Codex-Sweatshop#readme",
+  "bugs": {"url":"https://github.com/Roger96485/Codex-Sweatshop/issues"},
+  "type": "module",
+  "main": "desktop/main.mjs",
+  "productName": "Codex Sweatshop",
+  "author": "Codex Sweatshop",
+  "description": "Local Codex task scheduling across quota windows",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "start:web": "node src/server.mjs",
+    "setup:desktop": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/setup-desktop.ps1",
+    "build:win": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/build-desktop.ps1",
+    "build:dir": "node scripts/build-desktop.mjs",
+    "icons": "node scripts/render-icon.mjs",
+    "test:desktop": "node scripts/smoke-desktop.mjs",
+    "test:schedule-ui": "node scripts/test-schedule-ui.mjs",
+    "test:whip-native": "node scripts/check-whip-native.mjs",
+    "test:whip-input": "node scripts/test-whip-input.mjs --wait-for-focus",
+    "test:whip-placeholder": "node scripts/test-whip-placeholder.mjs",
+    "test": "node --test test/*.test.mjs vendor/wwwhip/test/*.test.js",
+    "doctor": "node scripts/doctor.mjs"
+  },
+  "devDependencies": {
+    "electron": "44.5.1"
+  }
+}

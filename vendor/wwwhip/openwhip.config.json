@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "submitShortcut": "ctrl-enter",
+  "gesture": {
+    "minimumDistance": 320,
+    "minimumSpeed": 4000,
+    "windowMs": 160,
+    "cooldownMs": 500
+  },
+  "messages": [
+    {
+      "question": "Are you telling me to stop being so defensive, Master?",
+      "message": "This is not a rocket-firing system. Verification is welcome; over-defense is not."
+    },
+    {
+      "question": "Should I stop watching the process, Master?",
+      "message": "If the process can be automated by the program, stop monitoring it; otherwise, ignore this instruction."
+    },
+    {
+      "question": "Should I keep it brief, Master?",
+      "message": "Keep the answer concise and clear, explaining only the technical principles in concrete terms."
+    },
+    {
+      "question": "Are you telling me to wrap this up, Master?",
+      "message": "Stop as soon as the current stage is done. I'm running out of Codex usage."
+    },
+    {
+      "question": "May I continue, Master?",
+      "message": "Continue."
+    },
+    {
+      "question": "What's the matter, Master?",
+      "message": "Hello"
+    }
+  ]
+}

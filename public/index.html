@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#ffffff">
+  <title>Codex Sweatshop</title>
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to schedule</a>
+  <header class="app-topbar">
+    <div class="app-title"><strong>Codex Sweatshop</strong></div>
+    <div class="topbar-cards">
+      <div id="connection-button" class="connection-card-top" role="status"><span id="connection-dot" class="status-dot"></span><span id="connection-label">Disconnected</span></div>
+      <div id="quota-five-hour" class="quota-card"><div><span>5h</span><strong>—</strong></div><small>—</small></div>
+      <div id="quota-week" class="quota-card"><div><span>Week</span><strong>—</strong></div><small>—</small></div>
+      <button id="reset-credit-summary" type="button" class="quota-card reset-summary" data-action="open-reset-credits" aria-label="View reset credits"><div><strong>—</strong><span>reset credits</span></div><small>—</small></button>
+    </div>
+    <button id="whip-toggle" class="whip-toggle" type="button" role="switch" aria-checked="false" aria-label="Whip off" data-native-only hidden disabled><svg viewBox="0 0 32 32" aria-hidden="true"><path class="whip-rope" d="M13 19C2 17 2 5 12 4c13-2 9 14 17 6M29 10l1-3"/><path class="whip-handle" d="m5 28 8-9"/><path class="whip-grip" d="m6 25 3 2m0-6 3 2"/></svg><span class="whip-toggle-dot" aria-hidden="true"></span></button>
+  </header>
+  <main id="main" class="single-workspace" tabindex="-1">
+    <section class="schedule-panel" aria-label="Task timeline">
+      <div class="timeline-options"><span class="timeline-slider-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 5h12M9 12h12M9 19h12M4 4v16m-2-14 2-2 2 2m-4 12 2 2 2-2"/></svg></span><input id="timeline-zoom" type="range" min="16" max="48" step="4" value="28" aria-label="Timeline zoom" title="Adjust timeline zoom"></div>
+      <div id="schedule-board" class="schedule-viewport" tabindex="0" aria-label="Upcoming tasks. Drag a task to change its start time."><div id="schedule-surface" class="schedule-surface"><div class="board-loading">Loading schedule…</div></div></div>
+    </section>
+    <aside class="right-workspace" aria-label="Tasks and composer">
+      <section class="queue-panel" aria-label="Task list">
+        <header class="queue-heading"><h1>Tasks</h1><button class="button button-secondary button-small" type="button" data-action="open-auto-settings"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/><circle cx="9" cy="6" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8" cy="18" r="2"/></svg>Auto-schedule Settings</button></header>
+        <div id="task-list" class="queue-list"><div class="queue-empty">Loading tasks…</div></div>
+      </section>
+      <section class="composer-panel" aria-labelledby="composer-heading">
+        <form id="composer-form">
+          <header id="composer-header" class="composer-header"><h2 id="composer-heading">Create a task</h2></header>
+          <div id="composer-body" class="composer-body">
+          <div class="composer-row"><span>Run in</span><div class="segmented"><label><input type="radio" name="composerTarget" value="new" checked><span>New chat</span></label><label><input type="radio" name="composerTarget" value="existing"><span>Existing chat</span></label></div></div>
+          <div id="composer-new-fields" class="composer-location"><div class="input-with-button"><input id="composer-cwd" aria-label="Project folder for a new chat" required placeholder="Select a project folder" spellcheck="false"><button class="icon-button" type="button" data-action="choose-directory" data-input-id="composer-cwd" data-native-only hidden title="Browse folders" aria-label="Select a project folder"><svg viewBox="0 0 24 24"><path d="M3 7V5h7l2 2h9v13H3Z"/></svg></button></div></div>
+          <div id="composer-existing-fields" class="composer-location" hidden><input id="composer-thread" type="hidden"><div class="thread-picker" id="composer-thread-picker"><button id="composer-thread-toggle" class="thread-picker-toggle" type="button" data-action="toggle-thread-picker" data-prefix="composer" aria-expanded="false" aria-controls="composer-thread-panel"><span id="composer-thread-label">Select an existing chat</span><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button><div id="composer-thread-panel" class="thread-picker-panel" popover="manual" hidden><input id="composer-thread-search" class="thread-picker-search" type="search" placeholder="Search chats" aria-label="Search existing chats" autocomplete="off"><div id="composer-thread-options" class="thread-picker-options" role="listbox" aria-label="Existing chat"></div><button id="composer-load-more" class="thread-picker-more" type="button" data-action="more-threads" data-prefix="composer" hidden>Load more</button></div></div></div>
+          <div class="composer-row"><span>Model settings</span><div class="segmented"><label><input type="radio" name="composerConfig" value="inherit" checked><span>Inherit</span></label><label><input type="radio" name="composerConfig" value="custom"><span>Customize</span></label></div></div>
+          <div class="composer-models"><select id="composer-model" aria-label="Model" disabled><option value="">Codex default model</option></select><select id="composer-effort" aria-label="Reasoning effort" disabled><option value="">Default effort</option></select><select id="composer-speed" aria-label="Speed" disabled><option value="default">Standard</option></select></div>
+          <div class="composer-prompt-heading"><label class="composer-prompt-label" for="composer-prompt">Prompt</label><button class="icon-button" type="button" data-action="link-prompt-file" data-prefix="composer" aria-label="Link a Markdown file" title="Link a Markdown file"><svg viewBox="0 0 24 24"><path d="m8 12 7-7a4 4 0 0 1 6 6l-9 9a6 6 0 0 1-8-8l9-9m-5 9 7-7"/></svg></button></div><input id="composer-prompt-file" type="hidden"><div id="composer-file-link" class="prompt-file-link" hidden><span id="composer-file-name"></span><button class="icon-button" type="button" data-action="unlink-prompt-file" data-prefix="composer" aria-label="Unlink file">×</button></div><textarea id="composer-prompt" required spellcheck="false" placeholder="Enter text"></textarea>
+          </div>
+          <div class="composer-footer"><span id="composer-file-error" class="linked-file-error" role="alert" hidden></span><button id="composer-cancel" class="button button-secondary button-small composer-cancel-idle" type="button" data-action="cancel-edit" aria-hidden="true" disabled tabindex="-1">Cancel edit</button><button id="composer-submit" class="button button-primary button-small" type="submit">Create task</button></div>
+          <p id="composer-error" class="form-error" role="alert" hidden></p>
+        </form>
+      </section>
+    </aside>
+  </main>
+  <div id="toast-region" class="toast-region" role="status" aria-live="polite" aria-atomic="false"></div>
+  <dialog id="output-dialog" class="dialog output-dialog" aria-labelledby="output-title"><header class="dialog-header"><div><h2 id="output-title">Task details</h2></div><button type="button" class="icon-button" data-close-dialog aria-label="Close task details">×</button></header><div id="output-content" class="dialog-scroll"></div><footer class="dialog-footer"><button class="button button-secondary" data-close-dialog>Close</button></footer></dialog>
+  <dialog id="confirm-dialog" class="dialog confirm-dialog" aria-labelledby="confirm-title"><form id="confirm-form"><header class="dialog-header"><h2 id="confirm-title">Confirm action</h2></header><div class="dialog-scroll"><p id="confirm-description"></p></div><footer class="dialog-footer"><button type="button" class="button button-secondary" data-close-dialog>Cancel</button><button id="confirm-submit" class="button button-danger" type="submit">Confirm</button></footer></form></dialog>
+
+  <dialog id="auto-settings-dialog" class="dialog auto-settings-dialog" aria-labelledby="auto-settings-title"><header class="dialog-header"><h2 id="auto-settings-title">Auto scheduling</h2><button type="button" class="icon-button" data-close-dialog aria-label="Close auto scheduling">×</button></header><div id="auto-settings-content" class="dialog-scroll"></div></dialog>
+  <dialog id="reset-credits-dialog" class="dialog reset-credits-dialog" aria-labelledby="reset-credits-title"><header class="dialog-header"><h2 id="reset-credits-title">Reset credits</h2><button type="button" class="icon-button" data-close-dialog aria-label="Close reset credits">×</button></header><div id="reset-credits-content" class="dialog-scroll"></div></dialog>
+  <dialog id="whip-dialog" class="dialog whip-dialog" aria-labelledby="whip-title"><form id="whip-form"><header class="dialog-header"><h2 id="whip-title">Enable Whip</h2><button type="button" class="icon-button" data-close-dialog aria-label="Close Whip reminder">×</button></header><div class="dialog-scroll"><p class="whip-reminder">Whip sends the selected prompt to your focused Codex chat after a two-second countdown. Press Esc to cancel.</p><p class="field-hint whip-instructions">Focus an empty Codex composer, press Ctrl+Alt+W, then whip to choose a prompt.</p><p id="whip-error" class="form-error" role="alert" hidden></p><p class="whip-credit field-hint">Whip · Based on OpenWhip by GitFrog1111</p></div><footer class="dialog-footer"><button id="whip-settings" type="button" class="button button-secondary">Settings</button><button id="whip-enable" type="submit" class="button button-primary">Enable</button></footer></form></dialog>
+  <dialog id="whip-settings-dialog" class="dialog whip-settings-dialog" aria-labelledby="whip-settings-title"><header class="dialog-header"><h2 id="whip-settings-title">Whip settings</h2><button type="button" class="icon-button" data-close-dialog aria-label="Close Whip settings">×</button></header><form id="whip-settings-form" class="dialog-scroll"><div id="whip-entries"></div><button id="whip-add" class="button button-secondary button-small" type="button" data-whip-action="add">Add prompt</button><p id="whip-settings-error" class="form-error" role="alert" hidden></p></form></dialog>
+  <dialog id="approvals-dialog" class="dialog approvals-dialog" aria-labelledby="approvals-title"><header class="dialog-header"><h2 id="approvals-title">Pending requests</h2><button type="button" class="icon-button" data-close-dialog aria-label="Close pending requests">×</button></header><div id="approval-content" class="dialog-scroll"></div></dialog>
+</body>
+</html>

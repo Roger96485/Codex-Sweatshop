@@ -1,0 +1,139 @@
+{
+  "repository": "https://github.com/Roger96485/WWWhip",
+  "commit": "54dc557091bf95ac09b18c3447a5974382258c4c",
+  "integration": "Codex Sweatshop manages the Electron lifecycle, preferences and input ownership. Namespaced preload IPC and externalized overlay CSS/JS support isolated windows and CSP. Local patches include placeholder parsing and the Whip display name; original hashes below document the upstream snapshot rather than current patched content.",
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "71c521ae9e1884782e9ca4448e73706fd046489f9e11915a6c418074a2a03fd9"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "c4251a73d54341547d9a0574a8d84d4bde0a2c42593a821aa96f50eb6b5af058"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b86c3c253a9def7d441dd355c9229545645c51b58d4314e0deb8e4e2cb3bd961"
+    },
+    {
+      "path": "WINDOWS-CODEX.zh-CN.md",
+      "sha256": "9d989c3a0d9f20b2217265b3753c5066ad7386694f488eed6e08ca904ed21b3d"
+    },
+    {
+      "path": "openwhip.config.json",
+      "sha256": "abf919bd21003b4510c6d619291a1650d2f46fdc3493b2c7669b908066a10b15"
+    },
+    {
+      "path": "overlay.html",
+      "sha256": "5f457e8879c62a67214734df271114110f82ee9bc99c08c5d95ca044ae91bf37"
+    },
+    {
+      "path": "preload.js",
+      "sha256": "4f8f573d222429e0be65a0d85ad10e5ea763f3cb12c4b20c6b92154bf4358391"
+    },
+    {
+      "path": "lib/build-windows-helper.js",
+      "sha256": "fba8d1149704ab5e976bb24763c674aa42b38530ab329233f2ca7df856861429"
+    },
+    {
+      "path": "lib/configuration.js",
+      "sha256": "47fda66758f34dbe9c7bef343cea9daa3be8e5148f4edce9ce57bba7e0fb6bba"
+    },
+    {
+      "path": "lib/gesture-detector.js",
+      "sha256": "f24ef9d08b5c84f39a4995020ce61dbbab2d78d70b9745343420122995988b56"
+    },
+    {
+      "path": "lib/messages.js",
+      "sha256": "d9b325f12e431bd365634c6403e9ada81e421660c28d63a1293ef2bcd7b60266"
+    },
+    {
+      "path": "lib/preview-controller.js",
+      "sha256": "edf4e4c54af1a851ade98548c7876ba3218a00622f5ae0c64895717015fe0e5e"
+    },
+    {
+      "path": "lib/send-controller.js",
+      "sha256": "6199b466a3eec181501f73097d06d8402f137570509605fc0e3e4ad8da24aabd"
+    },
+    {
+      "path": "lib/status-message.js",
+      "sha256": "f1d13b79d85f3e4c67f3a92954d9c32197b39cd8c8026d8c46b61baf01df6e47"
+    },
+    {
+      "path": "lib/windows-codex.js",
+      "sha256": "6a16f30aa95a59a6fcad7c98c4c183a7668ad00c6b985cb694692b4fc9872ae1"
+    },
+    {
+      "path": "native/CodexInput.cs",
+      "sha256": "0e9844ffdb4fc32703e500af8960ef4e6f665382b20a70a21436b74c43bbe922"
+    },
+    {
+      "path": "native/Worker.cs",
+      "sha256": "2e760e47f4c54472f73ba9cff1d456498464b9195c1ae69c58b6009865fa6f9c"
+    },
+    {
+      "path": "sounds/A.mp3",
+      "sha256": "08398f6f8cd7413edaa1c18604ac3b61bb0981fa24fb578618840feea60a00f9"
+    },
+    {
+      "path": "sounds/B.mp3",
+      "sha256": "3e00d8a1a01b4c3fabb0f2b3144336d04888ea158b14190894e4a8fe62e12bcc"
+    },
+    {
+      "path": "sounds/C.mp3",
+      "sha256": "0e938e7b705a2ad00f0cef06265dd5f3020446274482c041e2077c3d15324634"
+    },
+    {
+      "path": "sounds/D.mp3",
+      "sha256": "a046a9d22bd00ed42a792f6de17993bfae8f7180f2b806c6d7f7a4fa1836eca6"
+    },
+    {
+      "path": "sounds/E.mp3",
+      "sha256": "2d806def79194f65e433eeac485462edb76b523192f13cbb2324dfac52a2fec4"
+    },
+    {
+      "path": "test/configuration.test.js",
+      "sha256": "8135c9329fab77adf0715df5a468da6215fd0bed57ded666eaf1db6ff8746c29"
+    },
+    {
+      "path": "test/fixture.html",
+      "sha256": "65cf41b748de638c9bcc1c56d91b4bef2b894b86f794728386d8e6b933c91d2e"
+    },
+    {
+      "path": "test/FixtureWorker.cs",
+      "sha256": "fda77a8b0917f50f911c7e2714b2afca314fef4ec97028e0f875d6b4492d780a"
+    },
+    {
+      "path": "test/gesture-detector.test.js",
+      "sha256": "a26abd38136eaab0d82c85929287bc975890cb6466452f377edd973406467618"
+    },
+    {
+      "path": "test/NativeTests.cs",
+      "sha256": "9f2aa89a66985911be21e751b03ca55c8c5159926232dc41a7480a6e60f86434"
+    },
+    {
+      "path": "test/preview-controller.test.js",
+      "sha256": "091657640265dac10949ba004074bc2783e8e1d9b9ffc2e774efc27f976d6bef"
+    },
+    {
+      "path": "test/send-controller.test.js",
+      "sha256": "b3e453640b5ef913e1b8378f91ef3f92b77a92b3307e02c834778fa1bd8c7a52"
+    },
+    {
+      "path": "test/windows-worker.test.js",
+      "sha256": "4697d742e29de5d3143798c0e3a21519b548dd0a399455b06cad704bb94929c2"
+    }
+  ],
+  "localPatches": [
+    {
+      "path": "native/CodexInput.cs",
+      "version": "0.6.1",
+      "description": "Recognize label-only and before/after placeholder layouts only within the empty ProseMirror paragraph; retain identical user-authored drafts and unknown structures."
+    },
+    {
+      "paths": ["native/CodexInput.cs", "lib/build-windows-helper.js", "lib/status-message.js", "overlay.html"],
+      "version": "0.6.2",
+      "description": "Use Whip in displayed tool names and messages; no changes to native binding, draft guards or keyboard input."
+    }
+  ]
+}

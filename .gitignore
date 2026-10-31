@@ -1,0 +1,24 @@
+data/
+.research/
+node_modules/
+*.log
+test-results/
+.npm-cache/
+dist/
+
+# Local accounts, prompts, debug data and one-off live acceptance scripts.
+.env
+.env.*
+!.env.example
+auth.json
+*.sqlite
+*.sqlite3
+*.db
+*.bak
+*.lnk
+.DS_Store
+Thumbs.db
+tools/
+scripts/test-real-schedule.mjs
+scripts/test-real-window.mjs
+desktop/icon-rounded.png

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>OpenWhip input fixture</title>
+<style>body{font:16px 'Segoe UI',sans-serif;background:#142033;color:#eef4ff;padding:24px} [contenteditable],input{display:block;min-height:44px;border:1px solid #577293;border-radius:8px;padding:12px;margin:12px 0;background:#22324a;color:inherit;width:90%} p{font-size:13px;color:#b0c4e0} .placeholder{position:relative;margin:0} .placeholder::after{content:attr(data-placeholder);position:absolute;left:0;top:0;pointer-events:none;color:#a9bbd1}</style>
+</head><body><h2>OpenWhip input fixture</h2><p>Local keyboard integration test</p>
+<section role="group" aria-label="Primary composer"><div id="composer" class="ProseMirror" contenteditable="true" role="textbox" aria-multiline="true" aria-label="Do anything" style="white-space:pre-wrap"><p class="placeholder" data-placeholder="Do anything"><br class="ProseMirror-trailingBreak"></p></div></section>
+<section role="group" aria-label="Side composer"><div id="other-composer" class="ProseMirror" contenteditable="true" role="textbox" aria-label="Do anything">Protected neighbouring draft</div></section>
+<input id="search" aria-label="Search chats" placeholder="Search fixture">
+<script>
+window.submissions = [];
+let composer = document.getElementById('composer');
+window.resetComposer = (label = 'Do anything') => {
+  composer.setAttribute('aria-label', label);
+  composer.innerHTML = '<p class="placeholder"><br class="ProseMirror-trailingBreak"></p>';
+  composer.firstChild.dataset.placeholder = label;
+  composer.focus();
+  const selection = window.getSelection();
+  selection.selectAllChildren(composer.firstChild);
+  selection.collapseToStart();
+};
+document.addEventListener('input', () => {
+  if (composer.textContent) composer.querySelector('.placeholder')?.classList.remove('placeholder');
+});
+document.addEventListener('keydown', event => {
+  if (event.target === composer && event.key === 'Enter') {
+    event.preventDefault();
+    if (window.ignoreSubmit) return;
+    window.submissions.push({text: composer.innerText, control: event.ctrlKey});
+    if (window.replaceConversation) {
+      const transcript = document.createElement('section');
+      transcript.className = 'group/thread-scroll-layout';
+      const bubble = document.createElement('div');
+      bubble.className = 'bg-user-message';
+      bubble.textContent = window.postedTextOverride || composer.innerText;
+      const replacement = composer.cloneNode(false);
+      transcript.append(bubble, replacement);
+      composer.parentElement.replaceWith(transcript);
+      composer = replacement;
+    }
+    if (window.renameOnSubmit) document.title = window.renameOnSubmit;
+    if (window.remountOnSubmit) {
+      const replacement = composer.cloneNode(false);
+      composer.replaceWith(replacement);
+      composer = replacement;
+    }
+    resetComposer(composer.getAttribute('aria-label'));
+    if (window.submissionBlurMs) {
+      composer.blur();
+      setTimeout(() => composer.focus(), window.submissionBlurMs);
+    }
+  }
+});
+</script></body></html>

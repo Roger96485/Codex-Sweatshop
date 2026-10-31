@@ -1,0 +1,12 @@
+
+  * { margin: 0; padding: 0; cursor: none; }
+  html, body { overflow: hidden; background: transparent; width: 100%; height: 100%; }
+  canvas { display: block; }
+  #hud { position: fixed; left: 50%; top: 24px; transform: translateX(-50%); width: max-content; max-width: min(1240px, 90vw); padding: 14px 24px; border: 1px solid #00000018; border-radius: 14px; background: rgba(225, 225, 225, 0.60); color: #000; font: 12px/1.5 Arial, sans-serif; font-weight: 400; text-align: center; pointer-events: none; box-shadow: 0 8px 24px #0002; }
+  #question { font-size: 21px; font-weight: 700; margin-bottom: 8px; overflow-wrap: anywhere; }
+  #status { color: #000; }
+  #hud[data-kind="error"] { border-color: #e78a74; }
+  #hud[data-kind="success"] { border-color: #74b99c; }
+  #countdown { color: #000; }
+  #track { height: 3px; border-radius: 3px; margin-top: 10px; background: #bdbdbd; overflow: hidden; }
+  #progress { height: 100%; background: #111; transform-origin: left; }

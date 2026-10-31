@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>WWWhip placeholder tests</title>
+<style>
+body {font:14px 'Segoe UI',sans-serif;margin:16px;background:white}
+[contenteditable] {border:1px solid #ccc;padding:8px;margin:8px;min-height:30px;white-space:pre-wrap}
+.placeholder {position:relative;margin:0}
+.empty-before .placeholder::before {content:attr(data-placeholder);color:#999;pointer-events:none;user-select:none}
+.form-before .placeholder {display:flow-root}
+.form-before .placeholder::before {content:attr(data-placeholder);color:#999;pointer-events:none;user-select:none;float:inline-start;width:100%;margin-inline-end:-100%;position:static}
+.with-break .placeholder::after {content:attr(data-placeholder);position:absolute;left:0;top:0;pointer-events:none;color:#999}
+</style></head><body><h1>Read-only placeholder tests</h1><div id="cases"></div>
+<script>
+window.makeCase = (id,label,html,style='empty-before') => {
+  const editor=document.createElement('div');editor.id=id;editor.className='ProseMirror '+style;
+  editor.contentEditable='true';editor.setAttribute('role','textbox');editor.setAttribute('aria-label',label);
+  editor.innerHTML=html;document.getElementById('cases').append(editor);
+};
+for(const label of ['使用 ChatGPT Work','Do anything','随心输入']) {
+  const index=['使用 ChatGPT Work','Do anything','随心输入'].indexOf(label);
+  makeCase('placeholder-'+index,label,'<p class="placeholder" data-placeholder="'+label+'"></p>');
+  makeCase('literal-'+index,label,'<p>'+label+'</p>');
+  makeCase('stale-class-'+index,label,'<p class="placeholder" data-placeholder="'+label+'">'+label+'</p>');
+}
+makeCase('old-break','Do anything','<p class="placeholder" data-placeholder="Do anything"><br class="ProseMirror-trailingBreak"></p>','with-break');
+makeCase('plain-break','Do anything','<p><br class="ProseMirror-trailingBreak"></p>');
+makeCase('form-before','使用 ChatGPT Work','<p class="placeholder" data-placeholder="使用 ChatGPT Work"><br class="ProseMirror-trailingBreak"></p>','form-before');
+makeCase('wrong-label','Do anything','<p class="placeholder" data-placeholder="Other text"></p>');
+makeCase('unknown-class','Do anything','<p class="looks-empty" data-placeholder="Do anything">Do anything</p>');
+makeCase('no-prosemirror','Do anything','<p class="placeholder" data-placeholder="Do anything"></p>');
+document.getElementById('no-prosemirror').classList.remove('ProseMirror');
+for(const [id,text] of [['space',' '],['zero-width','\u200b'],['multiline','one\ntwo'],['newline-literal','\nDo anything']]) {
+  makeCase(id,'Do anything','<p></p>');document.getElementById(id).firstChild.textContent=text;
+}
+makeCase('other-paragraph','Do anything','<p>Do anything</p><p><br class="ProseMirror-trailingBreak"></p>');
+makeCase('second-editor-placeholder','Do anything','<p></p>');
+makeCase('mixed-draft','Do anything','<p class="placeholder" data-placeholder="Do anything"></p><p>Real draft</p>');
+</script></body></html>

@@ -1,0 +1,36 @@
+WWWhip — upstream attribution and provenance
+
+This software is derived from OpenWhip by GitFrog1111 and its contributors:
+https://github.com/GitFrog1111/OpenWhip
+
+Upstream snapshot:
+83b976d7695934362b558b6340cb576c3b5656bb (2026-05-27)
+https://github.com/GitFrog1111/OpenWhip/tree/83b976d7695934362b558b6340cb576c3b5656bb
+
+The upstream package.json declares the SPDX license identifier "MIT":
+https://github.com/GitFrog1111/OpenWhip/blob/83b976d7695934362b558b6340cb576c3b5656bb/package.json
+That snapshot does not contain a standalone LICENSE file. The standard MIT
+license text and attribution lines in this distribution were added by the
+maintainer of this derivative; they are not represented as an upstream-authored
+license file.
+
+The original concept, whip rendering/physics, tray application foundation,
+icons, divider image, and sounds were inherited from OpenWhip. The original
+13 commits, including their author information, are retained in the standalone
+WWWhip repository's Git history. This vendored copy records its snapshot and
+file hashes in PROVENANCE.json rather than importing that Git history.
+No separate asset license was provided in the upstream snapshot.
+
+Roger96485's additions include Windows Codex Desktop input binding and draft
+protection, built-in ChatGPT Chat/Work and side-chat adaptation, configurable
+question/message pairs, gesture thresholds, countdown selection/cancellation,
+related UI changes, documentation, and tests. These additions are also MIT
+licensed. Upstream material remains credited to its original authors.
+
+This is an independent, unofficial derivative. It does not claim authorship
+of OpenWhip's original work or endorsement by GitFrog1111 or OpenAI.
+
+Third-party runtime packages, including Electron, remain under their respective
+licenses. They are installed separately by npm; their source and binaries are
+not vendored into this Git repository. See package-lock.json and the installed
+packages' license files for their notices.
