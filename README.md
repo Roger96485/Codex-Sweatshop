@@ -1,6 +1,6 @@
 # Codex Sweatshop
 
-Codex's 5-hour quota windows are such a pain. Put your Codex to work around the clock in a sweatshop and squeeze every last drop out of each window!
+Codex's 5-hour quota windows are such a pain. Put your Codex to work around the clock in a sweatshop and squeeze every last drop out of each quota window!
 
 <img src="desktop/icon.png" width="96" height="96" alt="Codex Sweatshop icon">
 
